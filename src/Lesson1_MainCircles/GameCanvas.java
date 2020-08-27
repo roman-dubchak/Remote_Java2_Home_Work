@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class GameCanvas extends JPanel{
     private long lastFrameTime;
-    private MainCircles controller;
+    private MainCircles controller; // содержит ссылку на MainCircles
 
     GameCanvas(MainCircles controller) {
         this.controller = controller;
@@ -26,6 +26,8 @@ public class GameCanvas extends JPanel{
         }
         repaint();
     }
+
+
 
     public int getLeft() { return 0; }
     public int getRight() { return getWidth() - 1; }

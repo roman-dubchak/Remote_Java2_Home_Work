@@ -8,15 +8,15 @@ public class Ball extends Sprite {
     private float vY;
 
     Ball() {
-        halfWidth = 20 + (float) (Math.random() * 50f);
+        halfWidth = 20 + (float) (Math.random() * 50f); // рандом ширины
         halfHeight = halfWidth;
         color = new Color (
                 (int)(Math.random() * 255), //r
                 (int)(Math.random() * 255), //g
                 (int)(Math.random() * 255)  //b
         );
-        vX = (float)(100f + (Math.random() * 200f));
-        vY = (float)(100f + (Math.random() * 200f));
+        vX = (float)(100f + (Math.random() * 200f)); // рандом скорости
+        vY = (float)(100f + (Math.random() * 200f)); // рандом скорости
     }
 
     @Override

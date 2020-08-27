@@ -17,19 +17,19 @@ public class MainCircles extends JFrame {
         });
     }
 
-    Sprite[] sprites = new Sprite[10];
+    Sprite[] sprites = new Sprite[10]; // создали 10 шаров
 
     private MainCircles() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(POS_X, POS_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
-        GameCanvas canvas = new GameCanvas(this);
+        GameCanvas canvas = new GameCanvas(this); // ссылка на объект в куче
         add(canvas, BorderLayout.CENTER);
-        initApplication();
+        initApplication(); // создали 10 шаров
         setTitle("Circles");
         setVisible(true);
     }
 
-    private void initApplication() {
+    private void initApplication() { // создали 10 шаров
         for (int i = 0; i < sprites.length; i++) {
             sprites[i] = new Ball();
         }
