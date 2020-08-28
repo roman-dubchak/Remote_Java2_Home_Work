@@ -8,6 +8,8 @@ public class MainCircles extends JFrame {
     private static final int WINDOW_WIDTH = 800;
     private static final int WINDOW_HEIGHT = 600;
 
+    Background background = new Background();
+
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable() {
             @Override
@@ -25,6 +27,10 @@ public class MainCircles extends JFrame {
         GameCanvas canvas = new GameCanvas(this); // ссылка на объект в куче
         add(canvas, BorderLayout.CENTER);
         initApplication(); // создали 10 шаров
+
+       setBackground(background.render());
+       setBackground(background.update());
+
         setTitle("Circles");
         setVisible(true);
     }
@@ -43,6 +49,7 @@ public class MainCircles extends JFrame {
     private void update(GameCanvas canvas, float deltaTime) {
         for (int i = 0; i < sprites.length; i++) {
             sprites[i].update(canvas, deltaTime);
+
         }
     }
 

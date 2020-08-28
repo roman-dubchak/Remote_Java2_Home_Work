@@ -6,6 +6,10 @@ import java.awt.*;
 public class GameCanvas extends JPanel{
     private long lastFrameTime;
     private MainCircles controller; // содержит ссылку на MainCircles
+//    private Color color;
+//    private Background background;
+Background background = new Background();
+
 
     GameCanvas(MainCircles controller) {
         this.controller = controller;
@@ -19,11 +23,15 @@ public class GameCanvas extends JPanel{
         float deltaTime = (currentTime - lastFrameTime) * 0.000000001f;
         controller.onDrawFrame(this, g, deltaTime);
         lastFrameTime = currentTime;
+
         try {
             Thread.sleep(17);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        controller.getBackground();
+
         repaint();
     }
 
