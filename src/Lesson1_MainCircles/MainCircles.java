@@ -28,9 +28,6 @@ public class MainCircles extends JFrame {
         add(canvas, BorderLayout.CENTER);
         initApplication(); // создали 10 шаров
 
-       setBackground(background.render());
-       setBackground(background.update());
-
         setTitle("Circles");
         setVisible(true);
     }
@@ -58,4 +55,5 @@ public class MainCircles extends JFrame {
             sprites[i].render(canvas, g);
         }
     }
+
 }
