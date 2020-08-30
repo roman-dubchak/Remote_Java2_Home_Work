@@ -14,7 +14,6 @@ Background background = new Background();
     GameCanvas(MainCircles controller) {
         this.controller = controller;
         lastFrameTime = System.nanoTime();
-        Color color = new Color(background.setColor(lastFrameTime));
 
     }
 
