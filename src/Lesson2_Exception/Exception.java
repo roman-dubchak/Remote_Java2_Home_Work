@@ -12,7 +12,6 @@ public class Exception  {
         System.out.println("замена запятой " + p);
 
 
-
         for (int i = 0; i <s.length() ; i++){
 
             if (s.charAt(i) == t);
@@ -25,19 +24,27 @@ public class Exception  {
         char n = 44; // запятая
         System.out.println(Arrays.toString(g));
 
-        String[][] a = arrString(s);
-        System.out.println(Arrays.toString(a));
+        try {
+            arrString(s);
+            String[][] a = arrString(s);
+            System.out.println(Arrays.toString(a));
+            sumArray(a);
+            System.out.println("Sum = " + sumArray(a));
+        }catch (ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
+        }catch (NumberFormatException e){
+            e.printStackTrace();
+        }
 
-        sumArray(a);
-        System.out.println("Sum = " + sumArray(a));
     }
 
-    public static String [][] arrString(String s) {
+    public static String [][] arrString(String s) throws ArrayIndexOutOfBoundsException{
         int m = 4;
         char t = 32; // пробел
         String p = s.replaceAll(Character.toString(t), ",");
         String[] g = p.split("\n");
-        if (g.length > 4); // For exception
+        if (g.length > 4)
+            throw new ArrayIndexOutOfBoundsException("");
         String[][] s2 = new String[m][];
         for (int i = 0; i < g.length; i++) {
             s2[i] = new String[]{g[i]};
@@ -45,15 +52,22 @@ public class Exception  {
         return s2;
     }
 
-    public static int sumArray (String[][] s){
+    public static int sumArray (String[][] s) throws NumberFormatException {
         int sum = 0;
         int a; // Exception - NumberFormatException
         for (int i = 0; i < s.length; i++) {
             for (int j = 0; j < s[i].length; j++){
                 a = Integer.parseInt(s[i][j]);
                 sum = sum + a;
+                throw new NumberFormatException ();
             }
         }
         return sum/2;
+
+    }
+
+    public static int forInt (String[][] a){
+        int v = 0;
+        return v;
     }
 }
