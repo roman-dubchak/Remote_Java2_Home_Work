@@ -1,8 +1,9 @@
 package Lesson2_Exception;
 
+import java.io.IOException;
 import java.util.Arrays;
 
-public class Exception  {
+public class ExceptionLesson {
     public static void main(String[] args) {
         char t = 32; // пробел
         char h = 44; // запятая
@@ -30,44 +31,40 @@ public class Exception  {
             System.out.println(Arrays.toString(a));
             sumArray(a);
             System.out.println("Sum = " + sumArray(a));
-        }catch (ArrayIndexOutOfBoundsException e){
-            e.printStackTrace();
-        }catch (NumberFormatException e){
+        }catch ( IOException | ClassNotFoundException e){
             e.printStackTrace();
         }
-
     }
 
-    public static String [][] arrString(String s) throws ArrayIndexOutOfBoundsException{
+    public static String [][] arrString(String s) throws IOException{
         int m = 4;
         char t = 32; // пробел
         String p = s.replaceAll(Character.toString(t), ",");
         String[] g = p.split("\n");
-        if (g.length > 4)
-            throw new ArrayIndexOutOfBoundsException("");
+        if (g.length != 4)
+            throw new IOException("This is not a 4x4 matrix");
         String[][] s2 = new String[m][];
         for (int i = 0; i < g.length; i++) {
             s2[i] = new String[]{g[i]};
+            if (s2[i].length != 4 )
+                throw new IOException("This is not a 4x4 matrix");
         }
+
         return s2;
     }
 
-    public static int sumArray (String[][] s) throws NumberFormatException {
+    public static int sumArray (String[][] s) throws ClassNotFoundException {
         int sum = 0;
-        int a; // Exception - NumberFormatException
+        int a;
         for (int i = 0; i < s.length; i++) {
             for (int j = 0; j < s[i].length; j++){
+                if ( s[i][j].charAt(j) >= 48 || s[i][j].charAt(j) <= 57)
+                    throw new ClassNotFoundException ("This number is not int");
                 a = Integer.parseInt(s[i][j]);
                 sum = sum + a;
-                throw new NumberFormatException ();
             }
         }
         return sum/2;
-
     }
 
-    public static int forInt (String[][] a){
-        int v = 0;
-        return v;
-    }
 }
