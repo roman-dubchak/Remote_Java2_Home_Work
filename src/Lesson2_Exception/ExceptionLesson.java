@@ -5,25 +5,8 @@ import java.util.Arrays;
 
 public class ExceptionLesson {
     public static void main(String[] args) {
-        char t = 32; // пробел
-        char h = 44; // запятая
+
         String s = "10 3 1 2\n2 3 2 2\n5 6 7 1\n300 3 1 0";
-        System.out.println("без замены " + s);
-        String p = s.replaceAll(Character.toString(t), ",");
-        System.out.println("замена запятой " + p);
-
-
-        for (int i = 0; i <s.length() ; i++){
-
-            if (s.charAt(i) == t);
-        }
-        String[] g = p.split("\n");
-        char [] f =  p.toCharArray();
-
-        System.out.println("s.toCharArray(f) = " + f);
-        char m = 32; // пробел
-        char n = 44; // запятая
-        System.out.println(Arrays.toString(g));
 
         try {
             arrString(s);
@@ -49,7 +32,6 @@ public class ExceptionLesson {
             if (s2[i].length != 4 )
                 throw new IOException("This is not a 4x4 matrix");
         }
-
         return s2;
     }
 
@@ -66,5 +48,4 @@ public class ExceptionLesson {
         }
         return sum/2;
     }
-
 }
