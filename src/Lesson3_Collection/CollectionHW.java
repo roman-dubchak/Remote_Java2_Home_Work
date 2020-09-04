@@ -28,6 +28,7 @@ public class CollectionHW {
         System.out.println(listUnic);
 
         countList(list,listUnic);
+        countList2(list,listUnic);
 
         HashMap <String, Integer>  map = new HashMap<>();
         map.put("Tany", 8904);
@@ -36,30 +37,31 @@ public class CollectionHW {
         System.out.println(map);
 
     }
-    static void countList (ArrayList<String> list, ArrayList<String> listUnic){
+    static void countList (ArrayList<String> list, ArrayList<String> listUnic){ //var1
         int count;
         for (int i = 0; i <listUnic.size(); i++) {
             count = 0;
             for (int j = 0; j < list.size(); j++) {
                 if (listUnic.get(i).equals(list.get(j))) count++;
             }
-            System.out.println("The word " + listUnic.get(i) + " : " + count + " times");
+            System.out.println("The word " + listUnic.get(i) + " : " + count + " times"); // console output
         }
     }
 
-//    static String countList2 (ArrayList<String> list, ArrayList<String> listUnic){
-//        int count;
-//        String s = "";
-//        for (int i = 0; i <listUnic.size(); i++) {
-//            count = 0;
-//            for (int j = 0; j < list.size(); j++) {
-//                if (listUnic.get(i).equals(list.get(j)))
-//                    count++;
-//            }
-//            return ("The word " + listUnic.get(i) + " : " + count + " times");
-//        }
-//        return
-//    }
+    static void countList2 (ArrayList<String> list, ArrayList<String> listUnic){ //var2
+        HashMap <String, Integer>  map = new HashMap<>();
+        Integer count;
+        String s = "";
+        for (int i = 0; i <listUnic.size(); i++) {
+            count = 0;
+            for (int j = 0; j < list.size(); j++) {
+                if (listUnic.get(i).equals(list.get(j)))
+                    count++;
+            }
+            map.put(listUnic.get(i),count);
+        }
+        System.out.println("Method void" + map); // for check
+    }
 }
 
 class Phonebook { //} extends HashMap <String, Integer>{
