@@ -1,12 +1,10 @@
 package Lesson3_Collection;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.HashSet;
+import java.util.*;
 
 public class CollectionHW {
     public static void main(String[] args) {
+        // Task 1
         ArrayList<String> list = new ArrayList<>();
         list.add("Apple");
         list.add("Table");
@@ -30,13 +28,19 @@ public class CollectionHW {
         countList(list,listUnic);
         countList2(list,listUnic);
 
-        HashMap <String, Integer>  map = new HashMap<>();
-        map.put("Tany", 8904);
-        map.put("Kany", 8999);
-        map.put("Tany", 8888);
-        System.out.println(map);
+        // Task 2
+        LinkedList<String> contacts = new LinkedList<>(Arrays.asList("Krilov", "Plotnikov", "Krilov")); // to check
+        LinkedList <Integer> telephonNum = new LinkedList<>(Arrays.asList(999, 888, 777)); // to check
+        System.out.println(contacts + " : " + telephonNum ); // to check
 
+        Phonebook phonebook = new Phonebook();
+        phonebook.add("Rakov", 444);
+        System.out.println(phonebook.contacts + " : " + phonebook.telephonNum);
+
+        phonebook.get("Krilov");
     }
+
+    // Methods Task 1
     static void countList (ArrayList<String> list, ArrayList<String> listUnic){ //var1
         int count;
         for (int i = 0; i <listUnic.size(); i++) {
@@ -64,27 +68,24 @@ public class CollectionHW {
     }
 }
 
-class Phonebook { //} extends HashMap <String, Integer>{
+    // Class Task 2
+class Phonebook {
     String name;
     Integer number;
-    ArrayList <String> contacts = new ArrayList<>(Arrays.asList("Katy", "Natasha"));
-    ArrayList <Integer> telephonNum = new ArrayList<>(Arrays.asList(9999, 88888));
+    LinkedList<String> contacts = new LinkedList<>(Arrays.asList("Krilov", "Plotnikov", "Krilov"));
+    LinkedList <Integer> telephonNum = new LinkedList<>(Arrays.asList(999, 888, 777));
 
-    HashMap <String, Integer> phonebookMap = new HashMap<>();
-
-    Phonebook(String name, Integer number){
-        this.name = name;
-        this.number = number;
+    void add (String s, Integer i){
+        contacts.add(s);
+        telephonNum.add(i);
     }
 
-
-//    @Override
-//    public Integer get(Object key) {
-//        return super.get(key);
-//    }
-//
-//    @Override
-//    public Integer put(String key, Integer value) {
-//        return super.put(key, value);
-//    }
+    void get (String s){
+        LinkedList<Integer> phone = new LinkedList<>();
+        for (int i = 0; i < contacts.size(); i++) {
+            if (s.equals(contacts.get(i)))
+                phone.add(telephonNum.get(i));
+        }
+        System.out.println("Krilov's phone number" + phone); // to check
+    }
 }
