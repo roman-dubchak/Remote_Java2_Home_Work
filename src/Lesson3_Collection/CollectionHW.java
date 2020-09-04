@@ -38,6 +38,14 @@ public class CollectionHW {
         System.out.println(phonebook.contacts + " : " + phonebook.telephonNum);
 
         phonebook.get("Krilov");
+
+        Phonebook2 phonebook2 = new Phonebook2();
+        phonebook2.addMap(333, "Gavr");
+        phonebook2.addMap(111, "Gavr");
+        phonebook2.addMap(222, "Hala");
+        System.out.println("Maps add " + phonebook2);
+        phonebook2.getMap("Gavr");
+
     }
 
     // Methods Task 1
@@ -70,8 +78,6 @@ public class CollectionHW {
 
     // Class Task 2
 class Phonebook {
-    String name;
-    Integer number;
     LinkedList<String> contacts = new LinkedList<>(Arrays.asList("Krilov", "Plotnikov", "Krilov"));
     LinkedList <Integer> telephonNum = new LinkedList<>(Arrays.asList(999, 888, 777));
 
@@ -88,4 +94,27 @@ class Phonebook {
         }
         System.out.println("Krilov's phone number" + phone); // to check
     }
+
 }
+
+    class Phonebook2 {
+    HashMap <Integer, String> telMap = new HashMap<>();
+
+    void addMap ( Integer i, String s){
+        telMap.put(i, s);
+    }
+
+    void getMap (String s){
+        LinkedList<Integer> phone = new LinkedList<>();
+        for(Map.Entry<Integer, String> map : telMap.entrySet()){
+            if(map.getValue().equals(s))
+                phone.add(map.getKey());
+        }
+        System.out.println("Maps Gavr tel: " + phone);
+    }
+
+        @Override
+        public String toString() {
+            return String.format("phoneBook(%s)",telMap);
+        }
+    }
