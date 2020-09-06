@@ -8,4 +8,5 @@ public class ChatServer {
     public void stop() {
         System.out.println("Server stopped");
     }
+
 }

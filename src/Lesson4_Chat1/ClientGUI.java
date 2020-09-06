@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
 
@@ -35,6 +36,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
                 new ClientGUI();
             }
         });
+
     }
 
     private ClientGUI() {
@@ -42,7 +44,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setSize(WIDTH, HEIGHT);
-//        log.setEditable(false);
+//       log.setEditable(false);
         JScrollPane scrollUser = new JScrollPane(userList);
         JScrollPane scrollLog = new JScrollPane(log);
         String[] users = {"user1", "user2", "user3", "user4", "user5",
@@ -65,6 +67,22 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         add(scrollUser, BorderLayout.EAST);
         add(panelTop, BorderLayout.NORTH);
         add(panelBottom, BorderLayout.SOUTH);
+
+        btnSend.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+//            send(tfMessage in log)
+                log.setText(tfMessage.getText());
+            }
+        });
+
+//         to Enter
+//        tfMessage.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                log.setText(tfMessage.getText());
+//            }
+//        });
 
         setVisible(true);
     }
