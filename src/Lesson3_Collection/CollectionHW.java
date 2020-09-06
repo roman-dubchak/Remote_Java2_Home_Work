@@ -47,8 +47,12 @@ public class CollectionHW {
         phonebook2.getMap("Gavr");
 
     }
+    // Methods Task 1.1
+    public static HashSet<String> listSetMethod(ArrayList<String> list){
+        return  new HashSet<String>(list);
+    }
 
-    // Methods Task 1
+    // Methods Task 1.2.1
     static void countList (ArrayList<String> list, ArrayList<String> listUnic){ //var1
         int count;
         for (int i = 0; i <listUnic.size(); i++) {
@@ -59,11 +63,10 @@ public class CollectionHW {
             System.out.println("The word " + listUnic.get(i) + " : " + count + " times"); // console output
         }
     }
-
+    // Methods Task 1.2.2
     static void countList2 (ArrayList<String> list, ArrayList<String> listUnic){ //var2
         HashMap <String, Integer>  map = new HashMap<>();
         Integer count;
-        String s = "";
         for (int i = 0; i <listUnic.size(); i++) {
             count = 0;
             for (int j = 0; j < list.size(); j++) {
@@ -73,6 +76,24 @@ public class CollectionHW {
             map.put(listUnic.get(i),count);
         }
         System.out.println("Method void" + map); // for check
+    }
+
+    // Methods Task 1.1.2 with Arr String[] words
+    private static TreeSet<String> getWords(String[] arr) {
+        return new TreeSet<>(Arrays.asList(arr));
+    }
+    // Methods Task 1.2.3 with Arr String[] words
+    private static HashMap<String, Integer> getWordsCount(String[] arr) {
+        HashMap<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            String word = arr[i];
+            if (map.containsKey(word)) {
+                map.put(word, map.get(word) + 1);
+            } else {
+                map.put(word, 1);
+            }
+        }
+        return map;
     }
 }
 
@@ -97,24 +118,27 @@ class Phonebook {
 
 }
 
-    class Phonebook2 {
-    HashMap <Integer, String> telMap = new HashMap<>();
+class Phonebook2 {
+HashMap <Integer, String> telMap = new HashMap<>();
 
-    void addMap ( Integer i, String s){
-        telMap.put(i, s);
-    }
+void addMap ( Integer i, String s){
+    telMap.put(i, s);
+}
 
-    void getMap (String s){
-        LinkedList<Integer> phone = new LinkedList<>();
-        for(Map.Entry<Integer, String> map : telMap.entrySet()){
-            if(map.getValue().equals(s))
-                phone.add(map.getKey());
-        }
-        System.out.println("Maps Gavr tel: " + phone);
+void getMap (String s){
+    LinkedList<Integer> phone = new LinkedList<>();
+    for(Map.Entry<Integer, String> map : telMap.entrySet()){
+        if(map.getValue().equals(s))
+            phone.add(map.getKey());
     }
+    System.out.println("Maps Gavr tel: " + phone);
+}
 
-        @Override
-        public String toString() {
-            return String.format("phoneBook(%s)",telMap);
-        }
+    @Override
+    public String toString() {
+        return String.format("phoneBook(%s)",telMap);
     }
+}
+
+
+
