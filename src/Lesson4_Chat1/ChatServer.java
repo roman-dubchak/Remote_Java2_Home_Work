@@ -5,6 +5,8 @@ public class ChatServer {
         System.out.println("Server started at port: " + port);
     }
 
+//    log
+
     public void stop() {
         System.out.println("Server stopped");
     }

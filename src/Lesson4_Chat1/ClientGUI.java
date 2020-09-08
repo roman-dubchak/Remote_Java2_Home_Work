@@ -4,7 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
 
@@ -68,23 +71,61 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         add(panelTop, BorderLayout.NORTH);
         add(panelBottom, BorderLayout.SOUTH);
 
+        String[] fileLogUser = new String[users.length];
+        for (int i = 0; i < fileLogUser.length; i++) {
+            fileLogUser[i] = "file Log " + users[i] + ".txt";
+        }
+
+        // Попробовать потоки ввода и вывода Стримы
+
         btnSend.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-//            send(tfMessage in log)
-                log.setText(tfMessage.getText());
+               log.setText(tfMessage.getText());
+                try {
+                    writeLogInFile(tfMessage.getText(), "log.txt");
+                }
+                catch (IOException ex){
+                    ex.getStackTrace();
+                }
             }
         });
 
 //         to Enter
-//        tfMessage.addActionListener(new ActionListener() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                log.setText(tfMessage.getText());
-//            }
-//        });
+        tfMessage.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                log.setText(tfMessage.getText());
+                try {
+                    writeLogInFile(tfMessage.getText(), "log.txt");
+                }
+                catch (IOException ex){
+                    ex.getStackTrace();
+                }
+            }
+        });
 
         setVisible(true);
+    }
+
+    public StringBuffer getBufferTextMessage (){
+        return new StringBuffer(tfMessage.getText());
+    }
+
+    public String getTextMessage(){
+        return tfMessage.getText();
+    }
+
+    public static void writeLog (String getTextMessage, String fileName, JTextField tfMessage, JTextArea log) throws IOException {
+        Scanner scanner = new Scanner(tfMessage.toString());
+
+    }
+
+    public static void writeLogInFile (String getTextMessage, String fileName) throws IOException {
+        PrintStream ps2 = new PrintStream(new FileOutputStream(fileName, true));
+        ps2.write(getTextMessage.getBytes());
+        ps2.flush();
+        ps2.close();
     }
 
     @Override
