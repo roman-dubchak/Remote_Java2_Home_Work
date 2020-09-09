@@ -1,13 +1,12 @@
 package Lesson4_Chat1;
 
+import com.sun.java.accessibility.util.SwingEventMonitor;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
 
 public class ClientGUI extends JFrame implements ActionListener, Thread.UncaughtExceptionHandler {
 
@@ -30,6 +29,9 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
     private final JButton btnSend = new JButton("Send");
 
     private final JList<String> userList = new JList<>();
+
+    //HW
+    private boolean shownIoErrors = false;
 
 
     public static void main(String[] args) {
@@ -56,6 +58,11 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         scrollUser.setPreferredSize(new Dimension(100, 0));
         cbAlwaysOnTop.addActionListener(this);
 
+        //HW
+        btnSend.addActionListener(this);
+        tfMessage.addActionListener(this); //         to Enter
+
+
         panelTop.add(tfIPAddress);
         panelTop.add(tfPort);
         panelTop.add(cbAlwaysOnTop);
@@ -71,61 +78,7 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         add(panelTop, BorderLayout.NORTH);
         add(panelBottom, BorderLayout.SOUTH);
 
-        String[] fileLogUser = new String[users.length];
-        for (int i = 0; i < fileLogUser.length; i++) {
-            fileLogUser[i] = "file Log " + users[i] + ".txt";
-        }
-
-        // Попробовать потоки ввода и вывода Стримы
-
-        btnSend.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-               log.setText(tfMessage.getText());
-                try {
-                    writeLogInFile(tfMessage.getText(), "log.txt");
-                }
-                catch (IOException ex){
-                    ex.getStackTrace();
-                }
-            }
-        });
-
-//         to Enter
-        tfMessage.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                log.setText(tfMessage.getText());
-                try {
-                    writeLogInFile(tfMessage.getText(), "log.txt");
-                }
-                catch (IOException ex){
-                    ex.getStackTrace();
-                }
-            }
-        });
-
         setVisible(true);
-    }
-
-    public StringBuffer getBufferTextMessage (){
-        return new StringBuffer(tfMessage.getText());
-    }
-
-    public String getTextMessage(){
-        return tfMessage.getText();
-    }
-
-    public static void writeLog (String getTextMessage, String fileName, JTextField tfMessage, JTextArea log) throws IOException {
-        Scanner scanner = new Scanner(tfMessage.toString());
-
-    }
-
-    public static void writeLogInFile (String getTextMessage, String fileName) throws IOException {
-        PrintStream ps2 = new PrintStream(new FileOutputStream(fileName, true));
-        ps2.write(getTextMessage.getBytes());
-        ps2.flush();
-        ps2.close();
     }
 
     @Override
@@ -133,20 +86,68 @@ public class ClientGUI extends JFrame implements ActionListener, Thread.Uncaught
         Object src = e.getSource();
         if (src == cbAlwaysOnTop) {
             setAlwaysOnTop(cbAlwaysOnTop.isSelected());
-        } else {
+        } else  if (src == btnSend || src == tfMessage ){ //HW
+            sendMessage();
+        } else  {
             throw new RuntimeException("Unknown source: " + src);
         }
+    }
+
+
+    //HW
+
+    private void sendMessage(){
+        String msg = tfMessage.getText();
+        String username = tfLogin.getText();
+        if ("".equals(msg)) return;
+        tfMessage.setText(null); // очищение поля ввода текста
+        tfMessage.grabFocus(); // сохранения курсава в поле ввода при нажатии на кнопку
+        putLog(String.format("%s: %s", username, msg)); // запись в лог поле
+        wrtMsgToLogFile(msg, username); // запись в лог файл
+    }
+
+
+    private void wrtMsgToLogFile (String msg, String username){
+        try (FileWriter out = new FileWriter("log2.txt", true)){
+            out.write(username + ": " + msg + "\n");
+            out.flush();
+        } catch (IOException e){
+            if(!shownIoErrors){
+                shownIoErrors = true;
+                showException(Thread.currentThread(), e);
+            }
+        }
+    }
+
+    private void putLog (String msg){
+        if ("".equals(msg)) return;
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() { // Event Dispatching Thread
+                log.append(msg + "\n");
+                log.setCaretPosition(log.getDocument().getLength()); // расположить курсор в конце текста документа
+            }
+        });
+
+    }
+
+    private void showException (Thread t, Throwable e){
+        String msg;
+        StackTraceElement[] ste = e.getStackTrace();
+        if (ste.length == 0)
+            msg = "Empty Stacktrace";
+        else {
+            msg = String.format("Exception in \"%s\" %s: %s\n\tat %s",
+                    t.getName(), e.getClass().getCanonicalName(), e.getMessage(), ste[0]);
+            JOptionPane.showMessageDialog(this, msg, "Exception", JOptionPane.ERROR_MESSAGE);
+        }
+        JOptionPane.showMessageDialog(null, msg, "Exception", JOptionPane.ERROR_MESSAGE);
     }
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
         e.printStackTrace();
-        String msg;
-        StackTraceElement[] ste = e.getStackTrace();
-        msg = "Exception in " + t.getName() + " " +
-                e.getClass().getCanonicalName() + ": " +
-                e.getMessage() + "\n\t at " + ste[0];
-        JOptionPane.showMessageDialog(this, msg, "Exception", JOptionPane.ERROR_MESSAGE);
+        showException(t, e);
         System.exit(1);
     }
 }
