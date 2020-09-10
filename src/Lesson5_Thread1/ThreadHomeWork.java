@@ -4,17 +4,21 @@ class ThreadHomeWork {
     static final int SIZE = 10000000;
     static final int h = SIZE / 2;
 
-
     public static void main (String[] arg){
         methodWithoutThread();
         methodWithThread();
     }
 
-    public static void methodWithoutThread() {
-        float[] arr = new float[SIZE];
+    public static void arrUnit (float[] arr){
         for (int i = 0; i < arr.length; i++) {
             arr[i] = 1;
         }
+    }
+
+    public static void methodWithoutThread() {
+        float[] arr = new float[SIZE];
+        arrUnit(arr);
+
         long a = System.currentTimeMillis();
         for (int i = 0; i < arr.length; i++) {
           arr[i] = (float) (arr[i] * Math.sin(0.2f + i / 5) * Math.cos (0.2f + i / 5) * Math.cos (0.4f + i / 2));
@@ -24,10 +28,8 @@ class ThreadHomeWork {
 
     public static void methodWithThread() {
         float[] arr = new float[SIZE];
+        arrUnit(arr);
 
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = 1;
-        }
         long a = System.currentTimeMillis();
 
         float[] arr1 = new float[h];
@@ -40,16 +42,26 @@ class ThreadHomeWork {
         threadTwoArr(arr1);
         threadTwoArr(arr2);
 
-        // var2
-        threadTwoArr2 (arr1, arr2);
-
         System.arraycopy(arr1, 0, arr,0, h);
         System.arraycopy(arr2, 0, arr, h, h);
 
-        System.out.println("Method execution time with two thread: " + (System.currentTimeMillis() - a));
+        System.out.println("Method execution time with two thread var 1: " + (System.currentTimeMillis() - a));
+
+        // var2
+        long b = System.currentTimeMillis();
+        float[] arr3 = new float[h];
+        float[] arr4 = new float[h];
+
+        threadTwoArr2 (arr3, arr4);
+
+        System.arraycopy(arr3, 0, arr,0, h);
+        System.arraycopy(arr4, 0, arr, h, h);
+
+        System.out.println("Method execution time with two thread var 2: " + (System.currentTimeMillis() - b));
+
     }
 
-    public static synchronized void threadTwoArr(float[] arr) {
+    public static void threadTwoArr(float[] arr) {
         Runnable r = new Runnable() {
             @Override
             public void run() {
@@ -66,10 +78,9 @@ class ThreadHomeWork {
             @Override
             public void run() {
                 arrFill(arr1, arr2);
-                }
+            }
             };
         new Thread (r, "Thread #1").start();
- //       new Thread (r, "Thread #2").start();
     }
 
     private static synchronized void arrFill (float[] arr1, float[] arr2) {
@@ -81,4 +92,6 @@ class ThreadHomeWork {
             arr2[i] = (float) (arr2[i] * Math.sin(0.2f + i / 5) * Math.cos(0.2f + i / 5) * Math.cos(0.4f + i / 2));
         }
     }
+
+
 }
