@@ -1,4 +1,4 @@
-package Lesson4_Chat1;
+package ru.gb.chat.client;
 
 import javax.swing.*;
 import java.awt.*;
