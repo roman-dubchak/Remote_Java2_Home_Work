@@ -2,13 +2,15 @@ package ru.gb.chat.server.core;
 
 import ru.gb.javatwo.network.ServerSocketThread;
 import ru.gb.javatwo.network.ServerSocketThreadListener;
+import ru.gb.javatwo.network.SocketThread;
+import ru.gb.javatwo.network.SocketThreadListener;
 
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
-public class ChatServer implements ServerSocketThreadListener {
+public class ChatServer implements ServerSocketThreadListener, SocketThreadListener {
     private ServerSocketThread server;
     private final DateFormat DATE_FORMAT = new SimpleDateFormat("HH:mm:ss: ");
 
@@ -61,10 +63,42 @@ public class ChatServer implements ServerSocketThreadListener {
     @Override
     public void onSocketAccepted(ServerSocketThread thread, ServerSocket server, Socket socket) {
         // client connected
+        String name = "Client " + socket.getInetAddress() + ":" + socket.getPort();
+        new SocketThread(this, name, socket);
     }
 
     @Override
     public void onServerException(ServerSocketThread thread, Throwable exception) {
+        exception.printStackTrace();
+    }
+
+    /**
+     * Socket Thread Listener methods
+     * */
+
+
+    @Override
+    public void onSocketStart(SocketThread thread, Socket socket) {
+        putLog("Client thread started");
+    }
+
+    @Override
+    public void onSocketStop(SocketThread thread) {
+        putLog("Client thread stopped");
+    }
+
+    @Override
+    public void onSocketReady(SocketThread thread, Socket socket) {
+        putLog("Client is ready to chat");
+    }
+
+    @Override
+    public void onReceiveString(SocketThread thread, Socket socket, String msg) {
+        thread.sendMessage("echo: " + msg);
+    }
+
+    @Override
+    public void onSocketException(SocketThread thread, Exception exception) {
         exception.printStackTrace();
     }
 }
