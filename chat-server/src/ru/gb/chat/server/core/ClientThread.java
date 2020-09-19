@@ -10,6 +10,17 @@ public class ClientThread extends SocketThread {
 
     private String nickname;
     private boolean isAuthorized;
+    private boolean isReconnecting;
+
+    // Флажок - Реконект клиента - Не надо ничего отправлять
+    public boolean isReconnecting() {
+        return isReconnecting;
+    }
+
+    void reconnect() {
+        isReconnecting = true;
+        close();
+    }
 
     public ClientThread(SocketThreadListener listener, String name, Socket socket){
         super (listener, name, socket);

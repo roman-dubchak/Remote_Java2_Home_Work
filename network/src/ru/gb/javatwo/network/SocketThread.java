@@ -1,11 +1,12 @@
 package ru.gb.javatwo.network;
 
+import java.io.Closeable;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class SocketThread extends Thread {
+public class SocketThread extends Thread implements Closeable {
 
     private final SocketThreadListener listener;
     private final Socket socket;
@@ -21,10 +22,10 @@ public class SocketThread extends Thread {
     @Override
     public void run() {
 
-        try{
+        try(DataInputStream in = new DataInputStream(socket.getInputStream());
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream())){
             listener.onSocketStart(this, socket);
-            DataInputStream in = new DataInputStream(socket.getInputStream());
-            out = new DataOutputStream(socket.getOutputStream());
+            this.out = out;
             listener.onSocketReady(this, socket);
             while (!isInterrupted()){
                 String msg = in.readUTF();
@@ -50,6 +51,7 @@ public class SocketThread extends Thread {
         }
     }
 
+    @Override
     public synchronized void close() {
         interrupt();
         try {
