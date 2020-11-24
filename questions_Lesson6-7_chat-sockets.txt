@@ -1,0 +1,37 @@
+1. кострукция создания Socket из полусокетов 
+ServerSocket serverSocket = new ServerSocket(8189);
+Socket client = serverSocket.accept())
+
+Socket socket = new Socket("127.0.0.1", 8189)
+Это слушает наш  Сокет на предмет появления соединеня от клиент
+
+2. Timeout
+server.setSoTimeout(timeout); // устанавливаем таймаут
+
+3. Как обычно логируем штатные исключения?
+try {
+	client = server.accept();
+}catch (SocketTimeoutException e){
+	System.out.println("Ping? Pong!");
+
+4. Почему в этот метод не отдаем величину Таймаута?
+listener.onServerTimeout
+
+5. Взаимосвязь Листнеров и подбор методов  в них. 
+Сложно понимать абстракции.
+
+6. Использования синхронайз не сильно ли увеличит время работы метода sendMessage?
+Или так всегда пишут методы отправки сообщения для чатов?
+ public synchronized boolean sendMessage (String msg) {}
+
+
+_____________________________________
+
+1. Есть пробелы в понимании "работы" интерфейсов. Часто ли методы в интефейсах "пустые"?
+2. Почему методы SqlClient synchronized? Чтобы не перепутались данные из БД? 
+по одному login не прилетел другой user?
+3. Как мы в onSocketAccepted заменили SocketThread на ClientThread?
+Расскажите про приведение типа SocketThread в ClientThread 
+в строке ClientThread client = (ClientThread) clients.get(i);
+
+

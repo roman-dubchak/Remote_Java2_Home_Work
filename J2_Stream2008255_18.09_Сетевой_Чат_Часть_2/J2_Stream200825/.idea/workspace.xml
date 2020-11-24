@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ca6371e1-b5f3-4c2e-b582-b3f5a23094a0" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1gb9DlYwQSGJMZVBoXgatESgMY6" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/chat-server" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.gb.javatwo.network" />
+      <recent name="ru.gb.chat.client" />
+      <recent name="ru.gb.chat.server.core" />
+      <recent name="ru.gb.chat.server.gui" />
+      <recent name="ru.gb.jtwo.elesson.online" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/chat-server" />
+      <recent name="$PROJECT_DIR$/src/ru/gb/jtwo/blesson/home" />
+      <recent name="$PROJECT_DIR$/src/ru/gb/jtwo/blesson/games/bricks" />
+      <recent name="$PROJECT_DIR$/src/ru/gb/jtwo/blesson/games/circles" />
+      <recent name="$PROJECT_DIR$/src/ru/gb/jtwo/blesson/games/common" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ClientGUI">
+    <configuration name="ClientGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.gb.chat.client.ClientGUI" />
+      <module name="chat-client" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.gb.chat.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EchoServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.gb.jtwo.flesson.online.EchoServer" />
+      <module name="J2_Stream200825" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.gb.jtwo.flesson.online.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.gb.jtwo.hlesson.online.Main" />
+      <module name="J2_Stream200825" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.gb.jtwo.hlesson.online.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.gb.chat.server.gui.ServerGUI" />
+      <module name="chat-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.gb.chat.server.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SimpleClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.gb.jtwo.flesson.online.SimpleClient" />
+      <module name="J2_Stream200825" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.gb.jtwo.flesson.online.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ClientGUI" />
+        <item itemvalue="Application.ServerGUI" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.SimpleClient" />
+        <item itemvalue="Application.EchoServer" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ca6371e1-b5f3-4c2e-b582-b3f5a23094a0" name="Default Changelist" comment="" />
+      <created>1598372307582</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1598372307582</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="149" y="125" key="#Project_Structure" timestamp="1600193269083">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="149" y="125" key="#Project_Structure/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1600193269083" />
+    <state x="121" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1599843147485">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="121" y="215" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1599843147485" />
+    <state x="462" y="210" key="#com.intellij.ide.util.MemberChooser" timestamp="1599852398896">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="462" y="210" key="#com.intellij.ide.util.MemberChooser/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1599852398896" />
+    <state width="1222" height="171" key="GridCell.Tab.0.bottom" timestamp="1600455976380">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state width="1222" height="171" key="GridCell.Tab.0.bottom/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1600455976380" />
+    <state width="1222" height="171" key="GridCell.Tab.0.center" timestamp="1600455976379">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state width="1222" height="171" key="GridCell.Tab.0.center/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1600455976379" />
+    <state width="1222" height="171" key="GridCell.Tab.0.left" timestamp="1600455976378">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state width="1222" height="171" key="GridCell.Tab.0.left/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1600455976378" />
+    <state width="1222" height="171" key="GridCell.Tab.0.right" timestamp="1600455976379">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state width="1222" height="171" key="GridCell.Tab.0.right/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1600455976379" />
+    <state x="144" y="135" key="SettingsEditor" timestamp="1599853092556">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="144" y="135" key="SettingsEditor/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1599853092556" />
+    <state x="162" y="283" width="951" height="692" key="dock-window-1" timestamp="1599848178065">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="162" y="283" width="951" height="692" key="dock-window-1/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1599848178065" />
+    <state x="394" y="298" key="extract.method.dialog" timestamp="1600196796789">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="394" y="298" key="extract.method.dialog/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1600196796789" />
+    <state x="29" y="166" key="new project wizard" timestamp="1599842952575">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="29" y="166" key="new project wizard/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1599842952575" />
+    <state x="456" y="225" width="670" height="675" key="run.anything.popup" timestamp="1598632127179">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="456" y="225" width="670" height="675" key="run.anything.popup/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1598632127179" />
+    <state x="316" y="302" width="670" height="676" key="search.everywhere.popup" timestamp="1600446734976">
+      <screen x="0" y="23" width="1680" height="978" />
+    </state>
+    <state x="316" y="302" width="670" height="676" key="search.everywhere.popup/0.23.1680.978/1680.23.1920.1057@0.23.1680.978" timestamp="1600446734976" />
+  </component>
+</project>
